@@ -15,13 +15,12 @@ import androidx.navigation.fragment.findNavController
 
 class WeatherHomeFragment : Fragment() {
 
-    //    TODO:
-//          dagger, databinding, coroutine, Room
-    companion object {
-        fun newInstance() = WeatherHomeFragment()
-    }
+    //    TODO: implement dagger, databinding, coroutine, Room
+//    companion object {
+//        fun newInstance() = WeatherHomeFragment()
+//    }
 
-    private lateinit var viewModel: MainViewModel
+//    private lateinit var viewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,11 +29,11 @@ class WeatherHomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_weather_home, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+//    override fun onActivityCreated(savedInstanceState: Bundle?) {
+//        super.onActivityCreated(savedInstanceState)
+//        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+//        // TODO: Use the ViewModel
+//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
