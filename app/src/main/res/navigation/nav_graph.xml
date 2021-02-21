@@ -24,6 +24,10 @@
         <action
             android:id="@+id/action_weatherListFragment_to_weatherListDetailFragment"
             app:destination="@id/weatherListDetailFragment" />
+        <argument
+            android:name="cityName"
+            android:defaultValue="Boston"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/weatherListDetailFragment"
