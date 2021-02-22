@@ -17,7 +17,7 @@ class AppModule() {
     @Provides
     fun provideGithubService(): OpenWeatherMapApi {
         return Retrofit.Builder()
-            .baseUrl("https://api.openweathermap.org/data/2.5")
+            .baseUrl("https://api.openweathermap.org/data/2.5/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(OpenWeatherMapApi::class.java)

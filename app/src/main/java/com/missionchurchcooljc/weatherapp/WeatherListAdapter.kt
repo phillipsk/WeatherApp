@@ -2,52 +2,79 @@ package com.missionchurchcooljc.weatherapp
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.missionchurchcooljc.weatherapp.api.CityNameWeather
 
-import com.missionchurchcooljc.weatherapp.placeholder.PlaceholderContent.PlaceholderItem
 import com.missionchurchcooljc.weatherapp.databinding.FragmentWeatherDetailBinding
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
-class WeatherListAdapter()
-    : ListAdapter<CityNameWeather.WeatherSummary, WeatherListAdapter.ViewHolder>(DiffCallback()) {
+class WeatherListAdapter
+    : ListAdapter<CityNameWeather, RecyclerView.ViewHolder>(DiffCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
-    return ViewHolder(FragmentWeatherDetailBinding.inflate(LayoutInflater.from(parent.context), parent, false))
-
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return WeatherViewHolder(
+            FragmentWeatherDetailBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.idView.text = item.main
-        holder.contentView.text = item.description
+        (holder as WeatherViewHolder).bind(item)
     }
 
+    class WeatherViewHolder(
+        private val binding: FragmentWeatherDetailBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.setClickListener {
+                binding.weatherMainObj?.let { item ->
+                    navigateToDetails(item, it)
+                }
+            }
+        }
 
-    inner class ViewHolder(binding: FragmentWeatherDetailBinding) : RecyclerView.ViewHolder(binding.root) {
-        val idView: TextView = binding.itemNumber
-        val contentView: TextView = binding.content
+        private fun navigateToDetails(
+            weather: CityNameWeather,
+            view: View
+        ) {
+            val direction =
+                WeatherListFragmentDirections.actionWeatherListFragmentToWeatherListDetailFragment(
+                    weather.weatherSummary.first() as Int // TODO: implement Details screen
+                )
+            view.findNavController().navigate(direction)
+        }
 
-        override fun toString(): String {
-            return super.toString() + " '" + contentView.text + "'"
+        fun bind(item: CityNameWeather) {
+            binding.apply {
+                weatherMainObj = item
+                executePendingBindings()
+            }
         }
     }
 
+
     class DiffCallback : DiffUtil.ItemCallback<CityNameWeather>() {
-        override fun areItemsTheSame(oldItem: CityNameWeather, newItem: CityNameWeather): Boolean {
+        override fun areItemsTheSame(
+            oldItem: CityNameWeather,
+            newItem: CityNameWeather
+        ): Boolean {
             return oldItem.weatherSummary == newItem.weatherSummary
         }
 
-        override fun areContentsTheSame(oldItem: CityNameWeather, newItem: CityNameWeather): Boolean {
+        override fun areContentsTheSame(
+            oldItem: CityNameWeather,
+            newItem: CityNameWeather
+        ): Boolean {
             return oldItem == newItem
         }
     }
-
 }
+
+

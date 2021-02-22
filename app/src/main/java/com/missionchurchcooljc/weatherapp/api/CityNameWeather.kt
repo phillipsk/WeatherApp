@@ -5,8 +5,9 @@ import com.google.gson.annotations.SerializedName
 data class CityNameWeather(
     @field:SerializedName("weather") val weatherSummary: List<WeatherSummary>,
     @field:SerializedName("main") val weatherDetails: WeatherDetails,
+    @field:SerializedName("name") val city: String
 
-    ) {
+) {
     data class WeatherSummary(
         @field:SerializedName("id") val id: Int,
         @field:SerializedName("main") val main: String,
@@ -15,7 +16,7 @@ data class CityNameWeather(
     )
 
     class WeatherDetails(
-        @field:SerializedName("temp") val temp: Double,
+        @field:SerializedName("temp") val temp: String,
         @field:SerializedName("feels_like") val feelsLike: Double,
         @field:SerializedName("temp_min") val tempMin: Double,
         @field:SerializedName("temp_max") val tempMax: Double,

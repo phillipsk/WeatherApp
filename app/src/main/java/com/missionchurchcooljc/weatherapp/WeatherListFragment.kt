@@ -1,12 +1,14 @@
 package com.missionchurchcooljc.weatherapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import com.missionchurchcooljc.weatherapp.api.CityNameWeather
 import com.missionchurchcooljc.weatherapp.api.WeatherRepository
 import com.missionchurchcooljc.weatherapp.databinding.FragmentWeatherListBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,14 +21,12 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class WeatherListFragment : Fragment() {
 
-    //TODO: this should be scoped in onCreateView, see Church App
+    //TODO: this can be scoped in onCreateView
     private val adapter = WeatherListAdapter()
 
     private val args: WeatherListFragmentArgs by navArgs()
-    private var searchJob: Job? = null
+//    TODO Implement viewModel
 //    private val viewModel: WeatherViewModel by viewModels()
-
-    private var columnCount = 1
 
     //    TODO: use constructor injection instead
     @Inject
@@ -59,21 +59,16 @@ class WeatherListFragment : Fragment() {
 
     fun fetchWeather(cityName: String) {
         coroutineScope.launch {
-            try {
-                val result = weatherRepository.fetchLatestWeather(cityName)
-                when (result) {
-                    is WeatherRepository.Result.Success -> {
-                        adapter.submitList(result.weather.weatherSummary)
-                    }
-                    is WeatherRepository.Result.Failure -> onFetchFailed()
-                }
-            } finally {
-            }
-
+            val result =
+                weatherRepository.fetchLatestWeather(cityName)
+            val tempList: MutableList<CityNameWeather> = mutableListOf()
+            tempList.add(result) //TODO: fix this workaround
+            adapter.submitList(tempList)
         }
     }
 
+    //    TODO: handle failed network request (duplicated in weatherRepository
     private fun onFetchFailed() {
-        TODO("Not yet implemented")
+        Log.d("onFetchFailed", "{${this.javaClass.simpleName}} :: onFetchFailed")
     }
 }

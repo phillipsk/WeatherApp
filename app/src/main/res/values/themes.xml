@@ -1,7 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.WeatherApp" parent="Theme.MaterialComponents.Light">
-    <!-- Primary brand color. -->
+    <style name="Theme.WeatherApp" parent="Theme.MaterialComponents.Light.DarkActionBar">
+
+        <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -10,8 +11,11 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-<!--        <item name="android:statusBarColor">?attr/colorPrimary</item>-->
-<!--        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>-->
+        <!--        <item name="android:statusBarColor">?attr/colorPrimary</item>-->
+        <!--        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>-->
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.WeatherApp.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+
 </resources>

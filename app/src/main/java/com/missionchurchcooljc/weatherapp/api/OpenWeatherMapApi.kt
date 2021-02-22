@@ -7,10 +7,10 @@ import retrofit2.http.Query
 
 interface OpenWeatherMapApi {
 
-    @GET("weather/{q}/{units}/{appid}/contributors")
+    @GET("weather")
     suspend fun getWeatherCityName(
         @Query("q") cityName: String,
         @Query("units") units: String = "Imperial",
         @Query("appid") apiKey: String = BuildConfig.OPENWEATHER_API_KEY
-    ): Response<CityNameWeather>
+    ): CityNameWeather
 }

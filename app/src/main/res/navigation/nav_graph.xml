@@ -33,6 +33,10 @@
         android:id="@+id/weatherListDetailFragment"
         android:name="com.missionchurchcooljc.weatherapp.WeatherListDetailItemFragment"
         android:label="weather_list_detail_fragment"
-        tools:layout="@layout/fragment_weather_list_detail_item" />
+        tools:layout="@layout/fragment_weather_list_detail_item">
+        <argument
+            android:name="cityId"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>

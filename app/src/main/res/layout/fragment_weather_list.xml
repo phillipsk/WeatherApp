@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
-            android:theme="@style/Theme.WeatherApp">
+            android:theme="@style/Theme.WeatherApp.AppBarOverlay">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
@@ -28,15 +28,15 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list"
             android:name="com.missionchurchcooljc.weatherapp.WeatherDetailFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            app:layoutManager="LinearLayoutManager"
+            android:clipToPadding="false"
+            android:paddingTop="72dp"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            app:spanCount="1"
             tools:context=".WeatherListFragment"
             tools:listitem="@layout/fragment_weather_detail" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

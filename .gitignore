@@ -93,3 +93,6 @@ lint/tmp/
 /app/google-services.json
 /common-ui-view/
 /.idea/
+/gradle
+/gradlew
+/gradlew.bat
