@@ -1,7 +1,6 @@
 
 # Weather App
-###  Demo App using AndroidX Navigation, Jetpack, Retrofit, Hilt
+###  Demo App using AndroidX Navigation, Jetpack, Retrofit, Hilt, MVVM
 
-![WeatherHomeFragment](previews/WeatherHomeFragment.jpg)
-![WeatherListFragment](previews/WeatherListFragment.jpg)
+![WeatherAppgif](previews/demo.gif)
 
