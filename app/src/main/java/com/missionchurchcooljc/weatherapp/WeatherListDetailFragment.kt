@@ -7,14 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.missionchurchcooljc.weatherapp.databinding.FragmentWeatherListDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class WeatherListDetailFragment : Fragment() {
 
-    // demonstrate passing of nav agrs parameter, never used
-//    private val args: WeatherListDetailFragmentArgs by navArgs()
+    private val args: WeatherListDetailFragmentArgs by navArgs()
     private val viewModel: WeatherViewModel by viewModels()
 
     private lateinit var binding: FragmentWeatherListDetailBinding
@@ -40,5 +40,10 @@ class WeatherListDetailFragment : Fragment() {
             binding.weather = item })
     }
 
+    override fun onStart() {
+        super.onStart()
+        //    TODO: handle failed network request (duplicated in weatherRepository)
+        viewModel.fetchWeather(args.cityName)
+    }
 
 }

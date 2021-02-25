@@ -48,22 +48,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="160dp"
-                android:text="@{weather.data.weatherDetails.temp}"
+                android:text="@{weather.data.weatherDetails.temp.substring(0,2)}"
                 android:textSize="100dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="72" />
 
             <TextView
-                android:id="@+id/feels_like"
+                android:id="@+id/feels_like_string"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="60dp"
-                android:text="@{weather.data.weatherDetails.feelsLike}"
+                android:text="Feels Like: "
                 android:textSize="20dp"
                 app:layout_constraintStart_toStartOf="@+id/temp"
-                app:layout_constraintTop_toBottomOf="@+id/temp"
-                tools:text="Feels Like: 78" />
+                app:layout_constraintTop_toBottomOf="@+id/temp" />
+
+            <TextView
+                android:id="@+id/feels_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{weather.data.weatherDetails.feelsLike.substring(0,2)}"
+                android:textSize="20dp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/feels_like_string"
+                app:layout_constraintStart_toEndOf="@+id/feels_like_string"
+                tools:text="78" />
 
             <TextView
                 android:id="@+id/temp_desc"
