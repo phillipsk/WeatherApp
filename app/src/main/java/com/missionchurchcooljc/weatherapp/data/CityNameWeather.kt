@@ -1,4 +1,4 @@
-package com.missionchurchcooljc.weatherapp.api
+package com.missionchurchcooljc.weatherapp.data
 
 import com.google.gson.annotations.SerializedName
 
@@ -17,10 +17,14 @@ data class CityNameWeather(
 
     class WeatherDetails(
         @field:SerializedName("temp") val temp: String,
-        @field:SerializedName("feels_like") val feelsLike: Double,
+        @field:SerializedName("feels_like") val feelsLike: String,
         @field:SerializedName("temp_min") val tempMin: Double,
         @field:SerializedName("temp_max") val tempMax: Double,
         @field:SerializedName("pressure") val pressure: Int,
         @field:SerializedName("humidity") val humidity: Int,
     )
 }
+
+data class WeatherViewState(
+    val data: CityNameWeather?
+)

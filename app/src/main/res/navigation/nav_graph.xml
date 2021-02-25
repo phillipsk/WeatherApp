@@ -31,12 +31,14 @@
     </fragment>
     <fragment
         android:id="@+id/weatherListDetailFragment"
-        android:name="com.missionchurchcooljc.weatherapp.WeatherListDetailItemFragment"
+        android:name="com.missionchurchcooljc.weatherapp.WeatherListDetailFragment"
         android:label="weather_list_detail_fragment"
-        tools:layout="@layout/fragment_weather_list_detail_item">
+        tools:layout="@layout/fragment_weather_list_detail">
+
         <argument
-            android:name="cityId"
-            app:argType="integer" />
+            android:name="cityName"
+            android:defaultValue="Boston"
+            app:argType="string" />
     </fragment>
 
 </navigation>

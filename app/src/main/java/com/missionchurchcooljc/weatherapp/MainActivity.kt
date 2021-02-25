@@ -13,6 +13,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
+//        to match the wireframe
+//        hides the default supportActionBar associated with the Jetpack navigation
+        val thisActivity = this
+        thisActivity.supportActionBar?.hide()
+
         if (BuildConfig.DEBUG) {
             Timber.plant(DebugTree())
         }
